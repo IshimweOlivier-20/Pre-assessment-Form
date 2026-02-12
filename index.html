@@ -65,9 +65,6 @@
             width: 100%;
             height: 280px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
             border-radius: 16px;
             margin-bottom: 20px;
             display: flex;
@@ -80,25 +77,33 @@
         .hero-image::before {
             content: '';
             position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at 30% 30%, #ff8c00, #ff6b00);
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            opacity: 0.1;
-            animation: pulse 3s ease-in-out infinite;
+            animation: glow 4s ease-in-out infinite;
+            z-index: 0;
         }
         
-        .hero-image::after {
-            content: '🌍';
-            font-size: 140px;
+        .hero-image img {
+            width: 90%;
+            height: auto;
+            max-width: 250px;
+            object-fit: contain;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 40px rgba(255, 140, 0, 0.25));
             z-index: 1;
-            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.3));
-            text-shadow: 0 0 30px rgba(255, 140, 0, 0.2);
+            position: relative;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.1); opacity: 0.2; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-12px) scale(1.03); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.15); opacity: 0.8; }
         }
         }
 
@@ -232,7 +237,9 @@
 <div class="container">
     
     <div id="screen-welcome" class="screen active">
-        <div class="hero-image"></div>
+        <div class="hero-image">
+            <img src="WhatsApp Image 2026-02-11 at  3.54.31 PM.jpeg" alt="Earth Enable Logo">
+        </div>
         
         <h2>Select Language / Hitamo Ururimi</h2>
         
