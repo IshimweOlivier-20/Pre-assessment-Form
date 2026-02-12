@@ -71,7 +71,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
         
         .hero-image::before {
@@ -79,21 +79,22 @@
             position: absolute;
             width: 280px;
             height: 280px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             animation: glow 4s ease-in-out infinite;
             z-index: 0;
         }
         
         .hero-image img {
-            width: 90%;
+            width: 85%;
             height: auto;
-            max-width: 250px;
+            max-width: 220px;
             object-fit: contain;
             animation: float 4s ease-in-out infinite;
             filter: drop-shadow(0 15px 40px rgba(255, 140, 0, 0.25));
-            z-index: 1;
+            z-index: 2;
             position: relative;
+            display: block;
         }
         
         @keyframes float {
@@ -238,7 +239,7 @@
     
     <div id="screen-welcome" class="screen active">
         <div class="hero-image">
-            <img src="WhatsApp Image 2026-02-11 at  3.54.31 PM.jpeg" alt="Earth Enable Logo">
+            <img src="logo.jpeg" alt="Earth Enable Logo" style="display: block; width: 100%; max-width: 220px; height: auto; object-fit: contain;">
         </div>
         
         <h2>Select Language / Hitamo Ururimi</h2>
