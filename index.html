@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre Assessment Form</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px; /* Mobile width */
+            background: var(--card);
+            min-height: 100vh;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Screens */
+        .screen {
+            display: none; /* Hidden by default */
+            padding: 20px;
+            flex-grow: 1;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Screen */
+        .hero-image {
+            width: 100%;
+            height: 200px;
+            background-image: url('https://images.unsplash.com/photo-1599695683406-c87d46481739?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0 0 16px 16px;
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: #475569;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            border-bottom: none;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        /* Radio Buttons as Cards */
+        .radio-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .radio-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .radio-option input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .radio-option input:checked + .radio-btn {
+            border-color: var(--primary);
+            background-color: #eff6ff;
+            color: var(--primary);
+        }
+
+        /* Text Input */
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: auto;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* Results */
+        .result-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+
+        .pass-card {
+            background-color: #f0fdf4;
+            border: 2px solid var(--success);
+        }
+
+        .fail-card {
+            background-color: #fef2f2;
+            border: 2px solid var(--danger);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .pass-text { color: var(--success); }
+        .fail-text { color: var(--danger); }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div id="screen-welcome" class="screen active">
+        <div class="hero-image"></div>
+        
+        <h2>Select Language / Hitamo Ururimi</h2>
+        
+        <div class="form-group">
+            <div class="radio-group" style="flex-direction: column;">
+                <label class="radio-option">
+                    <input type="radio" name="lang_select" value="en" onclick="setLanguage('en')">
+                    <div class="radio-btn">🇬🇧 English</div>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="lang_select" value="rw" onclick="setLanguage('rw')">
+                    <div class="radio-btn">🇷🇼 Kinyarwanda</div>
+                </label>
+            </div>
+        </div>
+
+        <div id="welcome-text-en" style="display:none;">
+            <h3>Welcome to the House Pre-Approval Assessment Form.</h3>
+            <p>This form supports Customer Sales Officers (CSOs) in conducting an initial eligibility assessment of a client’s house before quality assurance review. The objective is to reduce delays and ensure that only eligible houses proceed.</p>
+            <button class="btn-primary" onclick="startForm()">Start Assessment</button>
+        </div>
+
+        <div id="welcome-text-rw" style="display:none;">
+            <h3>Murakaza neza ku Ifishi yo Gusuzuma Inzu.</h3>
+            <p>Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje ibisabwa by’ibanze mbere yo kuyishyikiriza ishami rishinzwe ubuziranenge. Intego ni ukugabanya gutakaza igihe no kwirinda ingendo zidafite umumaro.</p>
+            <button class="btn-primary" onclick="startForm()">Tangira Gusuzuma</button>
+        </div>
+    </div>
+
+    <div id="screen-form-en" class="screen">
+        <h2>House Assessment</h2>
+        <form id="form-en" onsubmit="event.preventDefault(); submitForm('en');">
+            
+            <div class="form-group">
+                <label>1. Is the house registered in the client’s name?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q1" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q1" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>2. Does the house have a door and windows?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q2" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q2" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>3. Are there no significant cracks in the house?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q3" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q3" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>4. Does the house have humidity?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q4" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q4" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>5. Is the humidity at a high percentage?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q5" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q5" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>6. Is the roof of the house leaking?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q6" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q6" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>7. Is the roof leakage issue too big?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="en_q7" value="Yes" required><div class="radio-btn">Yes</div></label>
+                    <label class="radio-option"><input type="radio" name="en_q7" value="No"><div class="radio-btn">No</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>8. Any other observations by the CSO? (Optional)</label>
+                <textarea rows="3" name="en_notes"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Submit Assessment</button>
+        </form>
+    </div>
+
+    <div id="screen-form-rw" class="screen">
+        <h2>Isuzuza ry'Inzu</h2>
+        <form id="form-rw" onsubmit="event.preventDefault(); submitForm('rw');">
+            
+            <div class="form-group">
+                <label>1. Ese inzu yanditse ku izina ry’umukiriya?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q1" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q1" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>2. Ese inzu ifite urugi n’amadirishya?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q2" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q2" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>3. Ese inzu nta misate ikomeye ifite?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q3" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q3" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>4. Ese inzu ifite ubuhehere?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q4" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q4" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>5. Ese ubuhehere (humidity) buri ku gipimo cyo hejuru?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q5" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q5" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>6. Ese igisenge cy’inzu kiratoboka?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q6" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q6" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>7. Ese ikibazo cyo gutoboka kw’igisenge ni kinini cyane?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="rw_q7" value="Yes" required><div class="radio-btn">Yego</div></label>
+                    <label class="radio-option"><input type="radio" name="rw_q7" value="No"><div class="radio-btn">Oya</div></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>8. Hari ibindi byabonetse CSO yifuza kongeraho?</label>
+                <textarea rows="3" name="rw_notes"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Ohereza Raporo</button>
+        </form>
+    </div>
+
+    <div id="screen-result" class="screen">
+        </div>
+
+</div>
+
+<script>
+    let currentLang = '';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.getElementById('welcome-text-en').style.display = lang === 'en' ? 'block' : 'none';
+        document.getElementById('welcome-text-rw').style.display = lang === 'rw' ? 'block' : 'none';
+    }
+
+    function startForm() {
+        if (!currentLang) return alert('Please select a language / Hitamo ururimi');
+        
+        document.getElementById('screen-welcome').classList.remove('active');
+        if (currentLang === 'en') {
+            document.getElementById('screen-form-en').classList.add('active');
+        } else {
+            document.getElementById('screen-form-rw').classList.add('active');
+        }
+        window.scrollTo(0,0);
+    }
+
+    function submitForm(lang) {
+        // Get values based on language prefix (en_ or rw_)
+        // Values are "Yes" or "No" (Strings)
+        const getVal = (qNum) => {
+            const radios = document.getElementsByName(lang + '_q' + qNum);
+            for (let radio of radios) {
+                if (radio.checked) return radio.value;
+            }
+            return null;
+        };
+
+        const q1 = getVal(1); // Registration
+        const q2 = getVal(2); // Doors/Windows
+        // Q3 (Cracks) is recorded but not a fail condition in the prompt rules
+        // Q4 (Humidity exists) is setup
+        const q5 = getVal(5); // High Humidity
+        // Q6 (Leaks) setup
+        const q7 = getVal(7); // Big Leak
+
+        // LOGIC ENGINE
+        // Fail if: Not registered OR No doors/windows OR High Humidity OR Big Leak
+        let isFail = false;
+
+        if (q1 === 'No') isFail = true;
+        if (q2 === 'No') isFail = true;
+        if (q5 === 'Yes') isFail = true;
+        if (q7 === 'Yes') isFail = true;
+
+        showResult(isFail, lang);
+    }
+
+    function showResult(isFail, lang) {
+        // Hide forms
+        document.getElementById('screen-form-en').classList.remove('active');
+        document.getElementById('screen-form-rw').classList.remove('active');
+        
+        const resultScreen = document.getElementById('screen-result');
+        resultScreen.classList.add('active');
+        window.scrollTo(0,0);
+
+        let content = '';
+
+        if (lang === 'en') {
+            if (isFail) {
+                content = `
+                    <div class="result-card fail-card">
+                        <span class="icon">✖</span>
+                        <h2 class="fail-text">HOUSE HAS FAILED</h2>
+                        <p>Thank you for completing the assessment.</p>
+                        <p>Based on the information provided, the house <strong>does not meet</strong> the minimum eligibility requirements and cannot proceed to the next stage.</p>
+                    </div>
+                `;
+            } else {
+                content = `
+                    <div class="result-card pass-card">
+                        <span class="icon">✔</span>
+                        <h2 class="pass-text">HOUSE HAS PASSED</h2>
+                        <p>Thank you for completing the assessment.</p>
+                        <p>Based on the information provided, the house <strong>meets</strong> the minimum eligibility requirements and can proceed to the next stage.</p>
+                    </div>
+                `;
+            }
+        } else { // Kinyarwanda
+            if (isFail) {
+                content = `
+                    <div class="result-card fail-card">
+                        <span class="icon">✖</span>
+                        <h2 class="fail-text">INZU NTABWO YEMEWE</h2>
+                        <p>Murakoze kuzuza iyi fishi.</p>
+                        <p>Hashingiwe ku bisubizo mwatanze, inzu <strong>ntizujuje</strong> ibisabwa by’ibanze bityo ntishobora gukomeza ku cyiciro gikurikira.</p>
+                    </div>
+                `;
+            } else {
+                content = `
+                    <div class="result-card pass-card">
+                        <span class="icon">✔</span>
+                        <h2 class="pass-text">INZU IREMEWE</h2>
+                        <p>Murakoze kuzuza iyi fishi.</p>
+                        <p>Hashingiwe ku bisubizo mwatanze, inzu <strong>yujuje</strong> ibisabwa by’ibanze kandi yemerewe gukomeza ku cyiciro gikurikira.</p>
+                    </div>
+                `;
+            }
+        }
+
+        resultScreen.innerHTML = content + '<br><button class="btn-primary" onclick="location.reload()">New Assessment</button>';
+    }
+</script>
+
+</body>
+</html>
