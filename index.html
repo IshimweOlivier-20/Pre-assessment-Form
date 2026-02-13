@@ -174,6 +174,7 @@
         }
 
         /* Text Input */
+        input[type="text"],
         textarea {
             width: 100%;
             padding: 12px;
@@ -284,9 +285,19 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
     <div id="screen-form-en" class="screen">
         <h2>House Assessment</h2>
         <form id="form-en" onsubmit="event.preventDefault(); submitForm('en');">
+
+            <div class="form-group">
+                <label>1. Your full name</label>
+                <input type="text" name="en_full_name" required>
+            </div>
+
+            <div class="form-group">
+                <label>2. District</label>
+                <input type="text" name="en_district" required>
+            </div>
             
             <div class="form-group">
-                <label>1. Is the house registered in the client’s name?</label>
+                <label>3. Is the house registered in the client’s name?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q1" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q1" value="No"><div class="radio-btn">No</div></label>
@@ -294,7 +305,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>2. Does the house have a door and windows?</label>
+                <label>4. Does the house have a door and windows?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q2" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q2" value="No"><div class="radio-btn">No</div></label>
@@ -302,7 +313,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>3. Are there no significant cracks in the house?</label>
+                <label>5. Are there no significant cracks in the house?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q3" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q3" value="No"><div class="radio-btn">No</div></label>
@@ -310,7 +321,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>4. Does the house have humidity?</label>
+                <label>6. Does the house have humidity?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q4" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q4" value="No"><div class="radio-btn">No</div></label>
@@ -318,7 +329,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>5. Is the humidity at a high percentage?</label>
+                <label>7. Is the humidity at a high percentage?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q5" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q5" value="No"><div class="radio-btn">No</div></label>
@@ -326,7 +337,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>6. Is the roof of the house leaking?</label>
+                <label>8. Is the roof of the house leaking?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q6" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q6" value="No"><div class="radio-btn">No</div></label>
@@ -334,7 +345,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>7. Is the roof leakage issue too big?</label>
+                <label>9. Is the roof leakage issue too big?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="en_q7" value="Yes" required><div class="radio-btn">Yes</div></label>
                     <label class="radio-option"><input type="radio" name="en_q7" value="No"><div class="radio-btn">No</div></label>
@@ -342,7 +353,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>8. Any other observations by the CSO? (Optional)</label>
+                <label>10. Any other observations by the CSO? (Optional)</label>
                 <textarea rows="3" name="en_notes"></textarea>
             </div>
 
@@ -353,9 +364,19 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
     <div id="screen-form-rw" class="screen">
         <h2>Isuzuza ry'Inzu</h2>
         <form id="form-rw" onsubmit="event.preventDefault(); submitForm('rw');">
+
+            <div class="form-group">
+                <label>1. Amazina yawe yose</label>
+                <input type="text" name="rw_full_name" required>
+            </div>
+
+            <div class="form-group">
+                <label>2. Akarere</label>
+                <input type="text" name="rw_district" required>
+            </div>
             
             <div class="form-group">
-                <label>1. Ese inzu yanditse ku izina ry’umukiriya?</label>
+                <label>3. Ese inzu yanditse ku izina ry’umukiriya?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q1" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q1" value="No"><div class="radio-btn">Oya</div></label>
@@ -363,7 +384,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>2. Ese inzu ifite urugi n’amadirishya?</label>
+                <label>4. Ese inzu ifite urugi n’amadirishya?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q2" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q2" value="No"><div class="radio-btn">Oya</div></label>
@@ -371,7 +392,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>3. Ese inzu nta misate ikomeye ifite?</label>
+                <label>5. Ese inzu nta misate ikomeye ifite?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q3" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q3" value="No"><div class="radio-btn">Oya</div></label>
@@ -379,7 +400,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>4. Ese inzu ifite ubuhehere?</label>
+                <label>6. Ese inzu ifite ubuhehere?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q4" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q4" value="No"><div class="radio-btn">Oya</div></label>
@@ -387,7 +408,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>5. Ese ubuhehere (humidity) buri ku gipimo cyo hejuru?</label>
+                <label>7. Ese ubuhehere (humidity) buri ku gipimo cyo hejuru?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q5" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q5" value="No"><div class="radio-btn">Oya</div></label>
@@ -395,7 +416,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>6. Ese igisenge cy’inzu kiratoboka?</label>
+                <label>8. Ese igisenge cy’inzu kiratoboka?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q6" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q6" value="No"><div class="radio-btn">Oya</div></label>
@@ -403,7 +424,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>7. Ese ikibazo cyo gutoboka kw’igisenge ni kinini cyane?</label>
+                <label>9. Ese ikibazo cyo gutoboka kw’igisenge ni kinini cyane?</label>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="rw_q7" value="Yes" required><div class="radio-btn">Yego</div></label>
                     <label class="radio-option"><input type="radio" name="rw_q7" value="No"><div class="radio-btn">Oya</div></label>
@@ -411,7 +432,7 @@ Iyi fishi igenewe gufasha abashinzwe kugurisha (CSOs) gusuzuma niba inzu yujuje 
             </div>
 
             <div class="form-group">
-                <label>8. Hari ibindi byabonetse CSO yifuza kongeraho?</label>
+                <label>10. Hari ibindi byabonetse CSO yifuza kongeraho?</label>
                 <textarea rows="3" name="rw_notes"></textarea>
             </div>
 
